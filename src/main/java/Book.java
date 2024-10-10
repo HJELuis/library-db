@@ -1,13 +1,13 @@
 public class Book {
+    private int idAuthor;
     private String title;
-    private String author;
     private short year;
     private long ISBN;
 
 
-    public Book(String title, String author, short year, long ISBN) {
+    public Book(String title, int idAuthor, short year, long ISBN) {
         this.title = title;
-        this.author = author;
+        this.idAuthor = idAuthor;
         this.year = year;
         this.ISBN = ISBN;
     }
@@ -20,12 +20,12 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public int getAuthor() {
+        return idAuthor;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthor(int author) {
+        this.idAuthor = author;
     }
 
     public short getYear() {
@@ -46,7 +46,7 @@ public class Book {
 
     public static class BookBuilder {
         private String title;
-        private String author;
+        private int idAuthor;
         private short year;
         private long ISBN;
 
@@ -55,8 +55,8 @@ public class Book {
             this.ISBN = ISBN;
         }
 
-        public BookBuilder withAuthor(String author) {
-            this.author = author;
+        public BookBuilder withAuthor(int author) {
+            this.idAuthor = author;
             return this;
         }
 
@@ -68,14 +68,12 @@ public class Book {
         public Book build() throws Exception {
             validateAuthor();
             validateYear();
-            return new Book(this.title,this.author,this.year, this.ISBN);
+            return new Book(this.title,this.idAuthor,this.year, this.ISBN);
         }
-        
+
         public void validateAuthor() throws Exception {
-            if(author.length() < 0 || author.length() > 100) {
-                throw new Exception("Nombre del autor no válido");
-            } else if (author.isEmpty()) {
-                this.author = "unkown";
+            if(idAuthor < 0) {
+                throw new Exception("Autor no válido");
             }
         }
 
