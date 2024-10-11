@@ -1,13 +1,16 @@
+
+
+
 public class Book {
-    private int idAuthor;
+    private int idBook;
     private String title;
     private short year;
     private long ISBN;
 
 
-    public Book(String title, int idAuthor, short year, long ISBN) {
+    public Book(String title, int idBook, short year, long ISBN) {
         this.title = title;
-        this.idAuthor = idAuthor;
+        this.idBook = idBook;
         this.year = year;
         this.ISBN = ISBN;
     }
@@ -21,11 +24,11 @@ public class Book {
     }
 
     public int getAuthor() {
-        return idAuthor;
+        return idBook;
     }
 
     public void setAuthor(int author) {
-        this.idAuthor = author;
+        this.idBook = author;
     }
 
     public short getYear() {
@@ -46,18 +49,14 @@ public class Book {
 
     public static class BookBuilder {
         private String title;
-        private int idAuthor;
+        private int idBook;
         private short year;
         private long ISBN;
 
-        public BookBuilder(String title, long ISBN) {
+        public BookBuilder(int idBook, String title, long ISBN) {
+            this.idBook = idBook;
             this.title = title;
             this.ISBN = ISBN;
-        }
-
-        public BookBuilder withAuthor(int author) {
-            this.idAuthor = author;
-            return this;
         }
 
         public BookBuilder withYear(short year){
@@ -66,14 +65,14 @@ public class Book {
         }
 
         public Book build() throws Exception {
-            validateAuthor();
+            validateBookID();
             validateYear();
-            return new Book(this.title,this.idAuthor,this.year, this.ISBN);
+            return new Book(this.title,this.idBook,this.year, this.ISBN);
         }
 
-        public void validateAuthor() throws Exception {
-            if(idAuthor < 0) {
-                throw new Exception("Autor no válido");
+        public void validateBookID() throws Exception {
+            if(idBook < 0) {
+                throw new Exception("Id no válido");
             }
         }
 
