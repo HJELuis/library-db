@@ -1,9 +1,21 @@
+package dto;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUser;
+
+    @Column (name = "name")
     private String name;
+
+    @Column (name = "email")
     private String email;
+
+    @Column (name = "password")
     private String password;
 
     public User(int idUser, String name, String email, String password) {

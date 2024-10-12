@@ -1,9 +1,21 @@
-import java.util.Set;
+package dto;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="authors")
 public class Author {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idAuthor;
+
+    @Column(name = "name")
     private String name;
+
+    @Column (name = "last_name")
     private String lastName;
+
+    @Column (name = "biographyy")
     private String biography;
 
     public Author(int idAuthor, String name, String lastName, String biography) {

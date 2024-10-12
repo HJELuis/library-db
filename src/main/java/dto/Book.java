@@ -1,10 +1,21 @@
+package dto;
 
+import javax.persistence.*;
 
-
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idBook;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "year")
     private short year;
+
+    @Column (name = "isbn")
     private long ISBN;
 
 
