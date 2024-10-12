@@ -88,4 +88,14 @@ public class Author {
 
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Author author = (Author) obj;
+        return this.idAuthor == author.idAuthor && this.name.equals(author.name)
+                && this.lastName.equals(author.lastName)
+                && this.biography.equals(author.biography);
+    }
+
 }
