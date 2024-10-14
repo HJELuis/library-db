@@ -15,11 +15,19 @@ public class Author {
     @Column (name = "last_name")
     private String lastName;
 
-    @Column (name = "biographyy")
+    @Column (name = "biography")
     private String biography;
+
+    public Author(){}
 
     public Author(int idAuthor, String name, String lastName, String biography) {
         this.idAuthor = idAuthor;
+        this.name = name;
+        this.lastName = lastName;
+        this.biography = biography;
+    }
+
+    public Author(String name, String lastName, String biography) {
         this.name = name;
         this.lastName = lastName;
         this.biography = biography;

@@ -43,9 +43,11 @@ public class AuthorModel {
     public void remove(Author author) {
         EntityTransaction transaction = entityManager.getTransaction();
 
+        Author managedAuthor = entityManager.find(Author.class, author.getIdAuthor());
+
         try {
             transaction.begin();
-            entityManager.remove(author);
+            entityManager.remove(managedAuthor);
             transaction.commit();
         }catch(Exception e) {
             transaction.rollback();
