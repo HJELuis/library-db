@@ -71,9 +71,10 @@ public class Author {
         private String lastName;
         private String biography;
 
-        public AuthorBuilder(int idAuthor) {
-            this.idAuthor = idAuthor;
+        public AuthorBuilder() {
+
         }
+
 
         public AuthorBuilder withName(String name) {
             this.name = name;
@@ -106,4 +107,13 @@ public class Author {
                 && this.biography.equals(author.biography);
     }
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "idAuthor=" + idAuthor +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", biography='" + biography + '\'' +
+                '}';
+    }
 }

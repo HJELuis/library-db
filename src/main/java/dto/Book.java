@@ -79,8 +79,7 @@ public class Book {
         private short year;
         private long ISBN;
 
-        public BookBuilder(int idBook, String title, long ISBN) {
-            this.idBook = idBook;
+        public BookBuilder(String title, long ISBN) {
             this.title = title;
             this.ISBN = ISBN;
         }
@@ -118,6 +117,13 @@ public class Book {
                 && this.year == book.year && this.ISBN == book.ISBN;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Book{" +
+                "idBook=" + idBook +
+                ", title='" + title + '\'' +
+                ", year=" + year +
+                ", ISBN=" + ISBN +
+                '}';
+    }
 }

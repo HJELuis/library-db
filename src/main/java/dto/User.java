@@ -71,8 +71,7 @@ public class User {
         private String email;
         private String password;
 
-        public UserBuilder(int idUser, String password) {
-            this.idUser = idUser;
+        public UserBuilder(String password) {
             this.password = password;
         }
 
@@ -98,5 +97,15 @@ public class User {
         User user = (User) obj;
         return this.idUser == user.idUser && this.name.equals(user.name)
                 && this.email.equals(user.email) && this.password.equals(user.password);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "idUser=" + idUser +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
