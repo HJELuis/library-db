@@ -18,8 +18,16 @@ public class User {
     @Column (name = "password")
     private String password;
 
+    public User(){}
+
     public User(int idUser, String name, String email, String password) {
         this.idUser = idUser;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -81,5 +89,14 @@ public class User {
         public User build() {
             return new User (this.idUser, this.name, this.email, this.password);
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        User user = (User) obj;
+        return this.idUser == user.idUser && this.name.equals(user.name)
+                && this.email.equals(user.email) && this.password.equals(user.password);
     }
 }

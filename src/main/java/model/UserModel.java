@@ -1,5 +1,6 @@
 package model;
 
+import dto.Book;
 import dto.User;
 
 import javax.persistence.EntityManager;
@@ -44,9 +45,11 @@ public class UserModel {
     public void remove(User user){
         EntityTransaction transaction = entityManager.getTransaction();
 
+        User managedUser = entityManager.find(User.class, user.getIdUser());
+
         try {
             transaction.begin();
-            entityManager.remove(user);
+            entityManager.remove(managedUser);
             transaction.commit();
         }catch(Exception e) {
             transaction.rollback();

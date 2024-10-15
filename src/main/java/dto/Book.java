@@ -12,18 +12,33 @@ public class Book {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "year")
+    @Column(name = "published_year")
     private short year;
 
     @Column (name = "isbn")
     private long ISBN;
 
+    public Book(){}
 
-    public Book(String title, int idBook, short year, long ISBN) {
-        this.title = title;
+    public Book(int idBook, String title,  short year, long ISBN) {
         this.idBook = idBook;
+        this.title = title;
         this.year = year;
         this.ISBN = ISBN;
+    }
+
+    public Book(String title,  short year, long ISBN) {
+        this.title = title;
+        this.year = year;
+        this.ISBN = ISBN;
+    }
+
+    public int getIdBook() {
+        return idBook;
+    }
+
+    public void setIdBook(int idBook) {
+        this.idBook = idBook;
     }
 
     public String getTitle() {
@@ -78,7 +93,7 @@ public class Book {
         public Book build() throws Exception {
             validateBookID();
             validateYear();
-            return new Book(this.title,this.idBook,this.year, this.ISBN);
+            return new Book(this.idBook,this.title,this.year, this.ISBN);
         }
 
         public void validateBookID() throws Exception {
@@ -94,6 +109,14 @@ public class Book {
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Book book = (Book) obj;
+        return this.idBook == book.idBook && this.title.equals(book.title)
+                && this.year == book.year && this.ISBN == book.ISBN;
+    }
 
 
 
