@@ -1,12 +1,12 @@
 # Getting started
 
-This project uses the next Docker images: [mysql](https://hub.docker.com/_/mysql)  [adminer](https://hub.docker.com/_/adminer)
+This project uses the next Docker images: [mongo](https://hub.docker.com/_/mongo)  [mongo-express](https://hub.docker.com/_/mongo-express)
 
 ## Commands to create containers
 
-`docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mysql`
+`docker run -d --rm --name mongo -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=toor -p 27017:27017 mongo`
 
-`docker run --name adminer -d -p 8080:8080 adminer`
+`docker run -d --rm --name mongo-express -e ME_CONFIG_MONGODB_ADMINUSERNAME=root -e ME_CONFIG_MONGODB_ADMINPASSWORD=toor -e ME_CONFIG_MONGODB_URL=mongodb://root:toor@172.17.0.2:27017/ -p 8081:8081 mongo-express`
 
 ## Before execution
 
